@@ -62,7 +62,7 @@
     tempForm.textContent = comments
     document.body.appendChild(tempForm)
     tempForm.select()
-    alert('copy' + (document.execCommand('copy') ? 'success' : 'failure'))
+    alert('copy: ' + (document.execCommand('copy') ? 'success' : 'failure'))
     document.body.removeChild(tempForm)
   }
 

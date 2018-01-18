@@ -46,8 +46,8 @@
             .reverse()
             .reduce((acc, curr, i) => acc + Number(curr) * Math.pow(60, i), 0),
           comments: Array.prototype.slice
-            .call(el.querySelectorAll('.comment-block'))
-            .map((c) => c.innerText.split(/\n+/)[1])
+            .call(el.querySelectorAll('.comment-block p'))
+            .map((c) => c.innerHTML.replace(/<a.*?href="(.*?)".*?\/a>/gi, '$1'))
         }
       })
       .sort((a, b) => {

@@ -11,7 +11,7 @@ Distribution page: https://miyaoka.github.io/hearthis-ext/
 
 <img width="362" alt="UI" src="https://user-images.githubusercontent.com/1443118/35084064-73dd35ba-fc65-11e7-94ec-ec1c97a6190e.png">
 
-## Feartures
+## Features
 
 - PlaybackRate control. (1x-3x)
 - Skip Forward/Backward. (30sec, 15sec)

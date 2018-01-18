@@ -50,9 +50,7 @@
             .map((c) => c.innerHTML.replace(/<a.*?href="(.*?)".*?\/a>/gi, '$1'))
         }
       })
-      .sort((a, b) => {
-        return a.sec - b.sec
-      })
+      .sort((a, b) => a.sec - b.sec)
       .map((item) => [`<!-- ${item.time} -->`, ...item.comments.map((c) => `- ${c}`)].join('\n'))
       .join('\n\n')
   }

@@ -53,7 +53,7 @@
       .sort((a, b) => {
         return a.sec - b.sec
       })
-      .map((item) => [item.time, ...item.comments.map((c) => `- ${c}`)].join('\n'))
+      .map((item) => [`<!-- ${item.time} -->`, ...item.comments.map((c) => `- ${c}`)].join('\n'))
       .join('\n\n')
   }
   const copyComments = () => {

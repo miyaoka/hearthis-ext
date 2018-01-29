@@ -14,6 +14,6 @@ Distribution page: https://miyaoka.github.io/hearthis-ext/
 ## Features
 
 - PlaybackRate control. (1x-3x)
-- Skip Forward/Backward. (30sec, 15sec)
+- Skip Forward/Backward. (15sec, 15sec)
   - Also binded to DownArrow/UpArrow key.
 - Export comments ordered by playtime. (into clipboard)

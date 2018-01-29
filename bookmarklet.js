@@ -23,6 +23,13 @@
     ArrowDown: playBackward
   }
 
+  const timeToSec = (time) => {
+    return time
+      .split(':')
+      .reverse()
+      .reduce((acc, curr, i) => acc + Number(curr) * Math.pow(60, i), 0)
+  }
+
   const setPosition = (sec) => {
     sm.setPosition(soundId, sm.getSoundById(soundId).position + sec * 1000)
   }
@@ -39,14 +46,12 @@
       .call(document.querySelectorAll('.comments:not(.reply) > li'))
       .reverse()
       .map((el, index) => {
+        console.log(el)
         const time = el.querySelector('.comment-by').innerText.replace(/^.*at ([\d:]+) .*$/, '$1')
         return {
           index,
           time,
-          sec: time
-            .split(':')
-            .reverse()
-            .reduce((acc, curr, i) => acc + Number(curr) * Math.pow(60, i), 0),
+          sec: timeToSec(time),
           comments: Array.prototype.slice
             .call(el.querySelectorAll('.comment-block p'))
             .map((c) => c.innerHTML.replace(/<a.*?href="(.*?)".*?\/a>/gi, '$1'))
@@ -105,4 +110,10 @@
   rateSlider.addEventListener('change', (e) => rateChange(e.target.value))
   commentsButton.addEventListener('click', copyComments)
   window.addEventListener('keydown', onKeydown)
+
+  // Keep update commentPosition on plyaing
+  const wc = document.querySelector('#write_comment')
+  new MutationObserver((mutations) => {
+    wc.dataset.commentPosition = timeToSec(document.querySelector('.sm2_position').innerText)
+  }).observe(document.querySelector('#sm2_timing'), { childList: true })
 })()

@@ -37,9 +37,11 @@
   const getComments = () => {
     return Array.prototype.slice
       .call(document.querySelectorAll('.comments:not(.reply) > li'))
-      .map((el) => {
+      .reverse()
+      .map((el, index) => {
         const time = el.querySelector('.comment-by').innerText.replace(/^.*at ([\d:]+) .*$/, '$1')
         return {
+          index,
           time,
           sec: time
             .split(':')
@@ -50,7 +52,7 @@
             .map((c) => c.innerHTML.replace(/<a.*?href="(.*?)".*?\/a>/gi, '$1'))
         }
       })
-      .sort((a, b) => a.sec - b.sec)
+      .sort((a, b) => (a.sec === b.sec ? a.index - b.index : a.sec - b.sec))
       .map((item) => [`<!-- ${item.time} -->`, ...item.comments.map((c) => `- ${c}`)].join('\n'))
       .join('\n\n')
   }

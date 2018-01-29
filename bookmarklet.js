@@ -112,8 +112,9 @@
   window.addEventListener('keydown', onKeydown)
 
   // Keep update commentPosition on plyaing
-  const wc = document.querySelector('#write_comment')
   new MutationObserver((mutations) => {
-    wc.dataset.commentPosition = timeToSec(document.querySelector('.sm2_position').innerText)
+    document.querySelector('#write_comment').dataset.commentPosition = timeToSec(
+      document.querySelector('.sm2_position').innerText
+    )
   }).observe(document.querySelector('#sm2_timing'), { childList: true })
 })()

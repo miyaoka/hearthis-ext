@@ -9,7 +9,7 @@
   if (document.querySelector('.ext')) return
 
   const playBackward = -15
-  const playForward = 30
+  const playForward = 15
 
   const microPlayer = document.querySelector('.micro-player')
   const container = document.createElement('li')
@@ -19,8 +19,8 @@
   const commentsButton = document.createElement('button')
   const style = document.createElement('style')
   const keyMap = {
-    ArrowUp: playBackward,
-    ArrowDown: playForward
+    ArrowUp: playForward,
+    ArrowDown: playBackward
   }
 
   const setPosition = (sec) => {

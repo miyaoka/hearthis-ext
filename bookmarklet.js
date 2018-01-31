@@ -46,9 +46,11 @@
       .call(document.querySelectorAll('.comments:not(.reply) > li'))
       .reverse()
       .map((el, index) => {
-        console.log(el)
-        const time = el.querySelector('.comment-by').innerText.replace(/^.*at ([\d:]+) .*$/, '$1')
+        const commentBy = el.querySelector('.comment-by')
+        const author = commentBy.querySelector('a').innerText
+        const time = commentBy.innerText.replace(/^.*at ([\d:]+) .*$/, '$1')
         return {
+          author,
           index,
           time,
           sec: timeToSec(time),
@@ -58,7 +60,9 @@
         }
       })
       .sort((a, b) => (a.sec === b.sec ? a.index - b.index : a.sec - b.sec))
-      .map((item) => [`<!-- ${item.time} -->`, ...item.comments.map((c) => `- ${c}`)].join('\n'))
+      .map((item) =>
+        [`<!-- [${item.time}] ${item.author} -->`, ...item.comments.map((c) => `- ${c}`)].join('\n')
+      )
       .join('\n\n')
   }
   const copyComments = () => {

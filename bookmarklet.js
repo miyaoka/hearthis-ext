@@ -72,7 +72,7 @@
     document.body.appendChild(tempForm)
     tempForm.select()
     alert(
-      'Copy comments into clipboard. : ' + (document.execCommand('copy') ? 'success' : 'failure')
+      'Export comments into clipboard. : ' + (document.execCommand('copy') ? 'Success' : 'Failure')
     )
     document.body.removeChild(tempForm)
   }
@@ -80,7 +80,7 @@
   // controls
   backwardButton.textContent = '<<'
   forwardButton.textContent = '>>'
-  commentsButton.textContent = 'comments'
+  commentsButton.textContent = 'Export'
   rateSlider.type = 'range'
   rateSlider.min = 1
   rateSlider.max = 3
